@@ -1,0 +1,57 @@
+variable sum
+variable max_num 
+variable min_num  
+variable list_n 
+variable stop ( using address as a flag to stop counting) 
+
+: list1 stop -10 12 17 ;
+: list2 stop 7 2 0 5 11 -4 ;
+
+: list_n_incr list_n @ 1 + list_n ! ; 
+
+: find_sum ( list -- sum) 
+    0 sum ! 0 list_n !
+    BEGIN 
+      dup stop = IF drop
+      ELSE sum @ + sum ! 
+      THEN list_n_incr 
+    dup stop = UNTIL ; 
+
+: find_average ( list -- average) 
+    find_sum 
+    sum @ list_n @ / sum @ list_n @ mod swap 
+    cr ." The average is: " . 
+      dup 0 = IF drop
+      ELSE ." and " . ." / " list_n @ . 
+      THEN cr ; 
+
+: find_max_num ( list -- max_num) 
+    0 max_num !
+    dup stop = IF drop
+    ELSE max_num ! 
+      BEGIN 
+        dup max_num @ > IF max_num ! 
+        ELSE drop 
+        THEN 
+      dup stop = UNTIL drop
+    THEN cr ." The max number is: " max_num @ . cr ; 
+
+: find_min_num ( list -- min_num) 
+    0 min_num ! 
+    dup stop = IF drop
+    ELSE min_num ! 
+      BEGIN 
+        dup min_num @ < IF min_num ! 
+        ELSE drop 
+        THEN 
+      dup stop = UNTIL drop
+    THEN cr ." The min number is: " min_num @ . cr ; 
+
+cr
+list1 find_average
+list1 find_max_num
+list1 find_min_num
+
+list2 find_average 
+list2 find_max_num 
+list2 find_min_num

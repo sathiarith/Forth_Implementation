@@ -1,0 +1,2 @@
+: first_prog ." Hello, world!" cr ;
+first_prog

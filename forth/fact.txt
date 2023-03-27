@@ -1,0 +1,18 @@
+variable input_num
+
+( factorial function/word)
+: fact ( num input_num ! -- product ) 
+    input_num @ 
+    dup 1 > IF 
+      BEGIN dup 1 - dup 1 = UNTIL 
+      input_num @ 1 - 0 DO * LOOP 
+    ELSE drop 1 
+    THEN ." The product of " input_num @ . ." ! is " . cr ;
+
+cr
+0 input_num ! fact
+1 input_num ! fact
+2 input_num ! fact
+3 input_num ! fact
+4 input_num ! fact
+5 input_num ! fact

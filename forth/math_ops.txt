@@ -1,0 +1,4 @@
+variable x
+1 3 + 2 / 
+x !
+x @ . cr

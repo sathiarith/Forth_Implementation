@@ -1,0 +1,2 @@
+: warnings ( n1 -- output n1 times) 0 DO cr ." DANGER!!!" cr LOOP ;
+5 warnings
